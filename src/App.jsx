@@ -2,12 +2,14 @@ import { useState } from 'react';
 import './App.css';
 import { PortfolioItemPage } from './pages/PortfolioItemPage'; // Make sure the path is correct based on your folder structure
 import { PortfolioPage } from './pages/PortfolioPage';
+import { portfolioItems } from './utils/data'; // I forgot to add this
 
 export const App = () => {
+  console.log(portfolioItems);
   const greeting = 'Welcome to Business Portfolio';
 
   //Create a new  selectedItem state
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null); // I had null before????
   // const [selectedItem, setSelectedItem] = useState(PortfolioPage);
   // const [selectedItem, setSelectedItem] = useState(portfolioItems[0]);
 
@@ -35,13 +37,18 @@ export const App = () => {
   return (
     <div className="App">
       {selectedItem ? (
-        // Only render Portfolio if the is a selectedItem
-        <PortfolioItemPage item={selectedItem} />
-      ) : (
-        // if not render the following:
         <>
-          <PortfolioPage />
+       
+          {/*Only render Portfolio if the is a selectedItem */}
+          <PortfolioItemPage item={selectedItem} />
         </>
+      ) : (
+        <>
+        <PortfolioPage />
+        </>
+       
+        // if not render the following:
+        // 
       )}
     </div>
   );

@@ -1,5 +1,5 @@
 import { portfolioItems } from '../utils/data';
-export const PortfolioItemPage = ({ item }) => {
+export const PortfolioItemPage = ({ item }) => {//item here becomes selectedItem
   return (
     <>
       <p>{item.id}</p> {/* Displaying the drink's id */}
