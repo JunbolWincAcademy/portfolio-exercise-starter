@@ -9,16 +9,20 @@ export const App = () => {
   const greeting = 'Welcome to Business Portfolio';
 
   //Create a new  selectedItem state
-  const [selectedItem, setSelectedItem] = useState(portfolioItems[0]); // I had null before????
+  const [selectedItem, setSelectedItem] = useState(null); // I had null before????
+
+
   // const [selectedItem, setSelectedItem] = useState(PortfolioPage);
   // const [selectedItem, setSelectedItem] = useState(portfolioItems[0]);
 
   //-----handleBusinessSelection function
-  // const handleBusinessSelection = (business) => {
-  //   console.log('Selected business:', business); // Add this line to debug
-  //   selectedItem(business);
-  // };
+ const handleSelectItem = (item) => {
+  setSelectedItem(item);
+};
 
+const resetSelection = () => {
+  setSelectedItem(null);
+};
   //-----handleSearchSubmit function
 
   // const handleSearchSubmit = (searchQuery) => { // the parameter is expected to be the search term entered by the user in the search input field.
@@ -39,13 +43,15 @@ export const App = () => {
       {selectedItem ? (
         <>
           {/*Only render Portfolio if the is a selectedItem */}
-          <PortfolioItemCard item={selectedItem} />
+          <PortfolioItemPage item={selectedItem} onResetSelection={resetSelection}  />
         </>
       ) : (
        
         // if not render the following:
         <>
-        <PortfolioItemCard/>
+          {/* <PortfolioItemPage item={itemA} /> */}
+          <PortfolioPage onSelectItem={handleSelectItem} item={selectedItem}/>{/*why two props?*/}
+
         </>
        
       )}
