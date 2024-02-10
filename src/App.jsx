@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { PortfolioItemPage } from './pages/PortfolioItemPage'; // Make sure the path is correct based on your folder structure
+import { PortfolioItemPage } from './pages/PortfolioItemPage'; 
 import { PortfolioPage } from './pages/PortfolioPage';
 import { portfolioItems } from './utils/data'; // I forgot to add this
 import { PortfolioItemCard } from './pages/PortfolioItemCard';
@@ -9,7 +9,7 @@ export const App = () => {
   const greeting = 'Welcome to Business Portfolio';
 
   //Create a new  selectedItem state
-  const [selectedItem, setSelectedItem] = useState(null); // I had null before????
+  const [selectedItem, setSelectedItem] = useState(null); // the app starts always with null so the browser shows PortfolioPage
 
 
   // const [selectedItem, setSelectedItem] = useState(PortfolioPage);
@@ -21,7 +21,8 @@ export const App = () => {
 };
 
 const resetSelection = () => {
-  setSelectedItem(null);
+  setSelectedItem(null); // the app starts always with null so the browser shows PortfolioPage but if the user click the reset button then
+  //the app will go back to PortfolioPage
 };
   //-----handleSearchSubmit function
 
@@ -50,7 +51,9 @@ const resetSelection = () => {
         // if not render the following:
         <>
           {/* <PortfolioItemPage item={itemA} /> */}
-          <PortfolioPage onSelectItem={handleSelectItem} item={selectedItem}/>{/*why two props?*/}
+          <PortfolioPage onSelectItem={handleSelectItem} />{/*why two props?*/} 
+          {/* onSelectItem is to carry the power to change handleSelection to PortfolioPage 
+          item to carry the state of useState to PortfolioPage whatever state it has  */}
 
         </>
        
